@@ -1,18 +1,30 @@
 'use strict';
+const {
+  Model
+} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('users', 'role', {
-      type: Sequelize.DataTypes.ENUM,
-      values: [
-        'reviewer',
-        'admin',
-      ],
-      defaultValue: 'reviewer'
-    })
-  },
+    static associate({ Comment }) {
+      User.hasMany(Comment, { as: 'author', foreignKey: 'author_id' })
+    }
 
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('users', 'role')
-  }
-}
+  };
+  User.init({
+    userId: {
+      type: DataTypes.SMALLINT,
+      primaryKey: true,
+      autoIncrement: true
+
+    },
+    firstName: DataTypes.STRING,
+    lastName: DataTypes.STRING,
+    email: DataTypes.STRING,
+    passwordDigest: DataTypes.STRING
+  }, {
+    sequelize,
+    underscored: true,
+    modelName: 'User',
+  });
+  return User;
+};
