@@ -66,4 +66,4 @@ Finally, in separate terminals, run `npm start` in each folder so that the API a
 
 ## License
 
-MIT © 2022 Elmer Figueroa-Garcia
+MIT © 2022 ThriveDX
