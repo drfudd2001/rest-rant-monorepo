@@ -1,18 +1,20 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, FormEvent } from "react"
 import { useHistory, useParams } from "react-router"
 
 function EditPlaceForm() {
 
 	const history = useHistory()
 
-    const { placeId } = useParams()
+    const { placeId } = useParams<{placeId: string}>()
 
     const [place, setPlace] = useState({
 		name: '',
 		pic: '',
 		city: '',
 		state: '',
-		cuisines: ''
+		cuisines: '',
+		placeId: '',
+		founded: '',
 	})
 
 	useEffect(() => {
@@ -24,7 +26,7 @@ function EditPlaceForm() {
 		fetchData()
 	}, [ placeId ])
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e: FormEvent) {
 		e.preventDefault()
 
 		await fetch(`http://localhost:5000/places/${place.placeId}`, {
@@ -41,7 +43,7 @@ function EditPlaceForm() {
 	return (
 		<main>
 			<h1>Edit Place</h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={(e) => handleSubmit(e)}>
 				<div className="form-group">
 					<label htmlFor="name">Place Name</label>
 					<input

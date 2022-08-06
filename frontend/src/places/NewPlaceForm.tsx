@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import { useHistory } from "react-router"
 
 function NewPlaceForm() {
@@ -10,10 +10,11 @@ function NewPlaceForm() {
 		pic: '',
 		city: '',
 		state: '',
-		cuisines: ''
+		cuisines: '',
+		founded: ''
 	})
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e: FormEvent) {
 		e.preventDefault()
 
 		await fetch(`http://localhost:5000/places`, {
