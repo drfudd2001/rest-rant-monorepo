@@ -1,16 +1,30 @@
-# Project REST-Rant 
+# rest-rant-monorepo
+
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+
 REST-Rant is an app where users can review restaurants.
 
-### Setup
+## Table of Contents
+
+- [Install](#install)
+- [API](#api)
+- [APP](#app)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Background
+
+## Install
+
 First, you'll need a Postgres database to connect to. Follow instructions here to setup the database and save credentials for the next step.
 
 Next create a `.env` file inside of `backend`. It will need to contain the following environment variables (change the values for the database to match what you defined in the previous step)
-```
+
 PORT=5000
 DB_USERNAME=rest_rant_user
 DB_PASSWORD=password
 DB_DATABASE=rest_rant
-```
 
 Next `cd` into `backend` and run `npm install` to install dependencies for the API.
 
@@ -18,7 +32,10 @@ Next, `cd` into `frontend`, and run `npm install` to install dependencies for th
 
 Finally, in separate terminals, run `npm start` in each folder so that the API and React app are running at the same time.
 
-### API (http://localhost:5000)
+## API
+
+(<http://localhost:5000>)
+
 | Method | Path                                 | Purpose                                   |
 | ------ | ------------------------------------ | ----------------------------------------- |
 | GET    | /                                    | Home page                                 |
@@ -30,8 +47,10 @@ Finally, in separate terminals, run `npm start` in each folder so that the API a
 | POST   | /places/:placeId/comments            | Create a comment about a particular place |
 | DELETE | /places/:placeId/comments/:commentId | Delete a comment about a particular place |
 
+## APP
 
-### App (http://localhost:3000)
+(<http://localhost:3000>)
+
 | Path                  | Component                 | Purpose                                                                         |
 | --------------------- | ------------------------- | ------------------------------------------------------------------------------- |
 | /                     | `Home.js`                 | Home page                                                                       |
@@ -40,3 +59,11 @@ Finally, in separate terminals, run `npm start` in each folder so that the API a
 | /places/new           | `places/NewPlaceForm.js`  | Form for creating a new place                                                   |
 | /places/:placeId      | `places/PlaceDetails.js`  | Details of a place, including it's comments, and a form to create a new comment |
 | /places/:placeId/edit | `places/EditPlaceForm.js` | Form for editing a place                                                        |
+
+## Maintainers
+
+[@drfudd2001](https://github.com/drfudd2001)
+
+## License
+
+MIT © 2022 Elmer Figueroa-Garcia
